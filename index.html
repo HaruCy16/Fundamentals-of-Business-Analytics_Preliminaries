@@ -759,8 +759,12 @@ function renderQuestion(){
   mcBox.innerHTML = '';
   document.getElementById('mtf-sub-options').innerHTML = '';
   document.getElementById('mtf-substep').style.display = 'none';
-  document.getElementById('tf-true-btn').className = 'tf-btn true-btn';
-  document.getElementById('tf-false-btn').className = 'tf-btn false-btn';
+  const tfTrueBtn = document.getElementById('tf-true-btn');
+  const tfFalseBtn = document.getElementById('tf-false-btn');
+  tfTrueBtn.className = 'tf-btn true-btn';
+  tfFalseBtn.className = 'tf-btn false-btn';
+  tfTrueBtn.onclick = () => selectTF(true);
+  tfFalseBtn.onclick = () => selectTF(false);
 
   if(item.type === 'mc' || item.type === 'sit'){
     if(item.type === 'sit'){
