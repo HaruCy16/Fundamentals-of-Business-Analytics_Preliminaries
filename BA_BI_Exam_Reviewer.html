@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>BA & BI Exam Reviewer — 100 Items</title>
+<style>
+  :root{
+    --navy:#1b2a6b;
+    --blue:#1d4ed8;
+    --lightblue:#3b82f6;
+    --sky:#60a5fa;
+    --purple:#7c3aed;
+    --amber:#b45309;
+    --bg:#f4f6fb;
+    --card:#ffffff;
+    --text:#1f2430;
+    --muted:#6b7280;
+    --green:#16a34a;
+    --green-bg:#ecfdf3;
+    --red:#dc2626;
+    --red-bg:#fef2f2;
+    --radius:16px;
+    --shadow:0 8px 24px rgba(27,42,107,0.10);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(180deg,#eef1fb 0%,var(--bg) 220px);
+    color:var(--text);
+    min-height:100vh;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:20px 16px 60px;
+  }
+  header.top{
+    text-align:center;
+    padding:18px 10px 8px;
+  }
+  header.top h1{
+    font-size:clamp(20px,5vw,28px);
+    color:var(--navy);
+    margin:0 0 4px;
+    letter-spacing:.3px;
+  }
+  header.top p{
+    margin:0;
+    color:var(--muted);
+    font-size:14px;
+  }
+
+  /* ---------- Start screen ---------- */
+  .card{
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:24px 20px;
+    margin-top:18px;
+  }
+  .start-card{ text-align:center; }
+  .start-card h2{ color:var(--navy); margin:6px 0 10px; font-size:20px; }
+  .start-card p{ color:var(--muted); font-size:14.5px; line-height:1.55; margin:0 0 18px; }
+  .mode-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:10px;
+    margin:16px 0 20px;
+  }
+  .mode-box{
+    border:2px solid #e5e9f7;
+    border-radius:12px;
+    padding:12px 6px;
+    font-size:12px;
+    color:var(--navy);
+  }
+  .mode-box b{ display:block; font-size:20px; color:var(--blue); margin-bottom:2px; }
+  .total-line{
+    font-size:14px;
+    color:var(--navy);
+    font-weight:700;
+    margin-bottom:16px;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    border:none;
+    border-radius:12px;
+    padding:14px 22px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+    min-height:48px;
+  }
+  .btn:active{ transform:scale(0.97); }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--blue),var(--navy));
+    color:#fff;
+    width:100%;
+    box-shadow:0 6px 16px rgba(29,78,216,0.35);
+  }
+  .btn-outline{
+    background:#fff;
+    border:2px solid var(--blue);
+    color:var(--blue);
+    width:100%;
+  }
+
+  .len-picker{
+    display:flex;
+    gap:8px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-bottom:16px;
+  }
+  .len-btn{
+    border:2px solid #e5e9f7;
+    background:#fff;
+    color:var(--navy);
+    border-radius:10px;
+    padding:10px 14px;
+    font-size:13.5px;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .len-btn.active{ border-color:var(--blue); background:#eef3ff; color:var(--blue); }
+
+  /* ---------- Quiz screen ---------- */
+  .progress-wrap{
+    margin-top:16px;
+  }
+  .progress-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:6px;
+  }
+  .progress-track{
+    height:8px;
+    background:#e6e9f5;
+    border-radius:20px;
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    background:linear-gradient(90deg,var(--lightblue),var(--blue));
+    border-radius:20px;
+    transition:width .3s ease;
+  }
+
+  .qtype-badge{
+    display:inline-block;
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+    padding:5px 11px;
+    border-radius:999px;
+    margin-bottom:12px;
+  }
+  .qtype-mc{ background:#e6edff; color:var(--blue); }
+  .qtype-mtf{ background:#fff1e0; color:var(--amber); }
+  .qtype-sit{ background:#f3e8ff; color:var(--purple); }
+
+  .scenario-box{
+    background:#f7f8fd;
+    border-left:4px solid var(--purple);
+    border-radius:8px;
+    padding:12px 14px;
+    font-size:14.5px;
+    color:#3b3f52;
+    line-height:1.55;
+    margin-bottom:14px;
+  }
+
+  .question-text{
+    font-size:17px;
+    line-height:1.5;
+    color:var(--text);
+    margin:0 0 18px;
+    font-weight:600;
+  }
+  .question-text em{
+    background:#fff4cc;
+    font-style:normal;
+    padding:1px 4px;
+    border-radius:4px;
+  }
+
+  .option{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    width:100%;
+    text-align:left;
+    background:#fff;
+    border:2px solid #e5e9f7;
+    border-radius:12px;
+    padding:13px 14px;
+    margin-bottom:10px;
+    font-size:15px;
+    cursor:pointer;
+    color:var(--text);
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .option:hover{ border-color:var(--sky); }
+  .option .opt-letter{
+    flex:0 0 auto;
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:#eef1fb;
+    color:var(--navy);
+    font-weight:700;
+    font-size:12.5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .option.selected{ border-color:var(--blue); background:#eef3ff; }
+  .option.correct{ border-color:var(--green); background:var(--green-bg); }
+  .option.incorrect{ border-color:var(--red); background:var(--red-bg); }
+  .option:disabled, .option.locked{ cursor:default; }
+
+  .tf-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:6px;
+  }
+  .tf-btn{
+    padding:16px 10px;
+    border-radius:12px;
+    border:2px solid #e5e9f7;
+    background:#fff;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    color:var(--navy);
+  }
+  .tf-btn.true-btn:hover{ border-color:var(--green); }
+  .tf-btn.false-btn:hover{ border-color:var(--red); }
+  .tf-btn.correct{ border-color:var(--green); background:var(--green-bg); color:var(--green); }
+  .tf-btn.incorrect{ border-color:var(--red); background:var(--red-bg); color:var(--red); }
+
+  .sub-step{
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1px dashed #e0e4f2;
+  }
+  .sub-label{
+    font-size:13.5px;
+    color:var(--muted);
+    margin-bottom:10px;
+    font-weight:600;
+  }
+
+  .feedback-box{
+    margin-top:16px;
+    padding:13px 14px;
+    border-radius:12px;
+    font-size:14px;
+    line-height:1.55;
+    display:none;
+  }
+  .feedback-box.show{ display:block; }
+  .feedback-box.fb-correct{ background:var(--green-bg); color:#166534; border:1px solid #bbf7d0; }
+  .feedback-box.fb-incorrect{ background:var(--red-bg); color:#991b1b; border:1px solid #fecaca; }
+  .feedback-box b{ display:block; margin-bottom:3px; }
+
+  .nav-row{
+    display:flex;
+    justify-content:flex-end;
+    margin-top:20px;
+  }
+  .nav-row .btn{ width:auto; padding:13px 26px; }
+
+  /* ---------- Results screen ---------- */
+  .score-ring-wrap{ display:flex; justify-content:center; margin:6px 0 14px; }
+  .score-ring{
+    width:150px; height:150px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:conic-gradient(var(--blue) calc(var(--pct) * 1%), #e6e9f5 0);
+  }
+  .score-ring-inner{
+    width:118px; height:118px; border-radius:50%;
+    background:#fff;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+  }
+  .score-ring-inner .big{ font-size:30px; font-weight:800; color:var(--navy); }
+  .score-ring-inner .small{ font-size:12px; color:var(--muted); }
+  .result-msg{ text-align:center; font-size:15px; color:var(--muted); margin-bottom:4px; }
+  .result-breakdown{
+    display:flex; justify-content:center; gap:22px; margin:14px 0 18px; flex-wrap:wrap; font-size:13px; color:var(--muted);
+  }
+  .result-breakdown b{ display:block; font-size:17px; }
+  .result-breakdown .ok b{ color:var(--green); }
+  .result-breakdown .no b{ color:var(--red); }
+
+  .filter-row{
+    display:flex;
+    gap:8px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin:4px 0 14px;
+  }
+  .filter-chip{
+    border:1.5px solid #e5e9f7;
+    background:#fff;
+    color:var(--muted);
+    border-radius:999px;
+    padding:6px 12px;
+    font-size:12.5px;
+    cursor:pointer;
+  }
+  .filter-chip.active{ border-color:var(--blue); color:var(--blue); background:#eef3ff; }
+
+  .review-item{
+    border:1px solid #e5e9f7;
+    border-radius:12px;
+    padding:14px;
+    margin-bottom:12px;
+  }
+  .review-item .rtag{
+    font-size:10.5px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.3px;
+    padding:3px 8px;
+    border-radius:999px;
+    display:inline-block;
+    margin-bottom:8px;
+  }
+  .review-item .rq{ font-weight:600; font-size:14.5px; margin-bottom:8px; }
+  .review-line{ font-size:13.5px; margin:3px 0; line-height:1.5; }
+  .review-line.ans-you{ color:var(--red); }
+  .review-line.ans-correct{ color:var(--green); }
+  .review-explain{ font-size:13px; color:var(--muted); margin-top:6px; }
+  .review-icon{ font-weight:800; margin-right:5px; }
+
+  .action-row{
+    display:flex;
+    gap:12px;
+    margin-top:18px;
+    flex-wrap:wrap;
+  }
+  .action-row .btn{ flex:1 1 160px; }
+
+  footer{
+    text-align:center;
+    color:#9aa1b3;
+    font-size:12px;
+    margin-top:26px;
+  }
+
+  @media (max-width:480px){
+    .wrap{ padding:14px 12px 50px; }
+    .card{ padding:18px 14px; border-radius:14px; }
+    .question-text{ font-size:16px; }
+    .tf-row{ gap:8px; }
+    .tf-btn{ font-size:14.5px; padding:14px 6px; }
+    .mode-grid{ gap:6px; }
+    .mode-box{ padding:10px 4px; font-size:10.5px; }
+    .mode-box b{ font-size:17px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>📊 Business Analytics &amp; Intelligence</h1>
+    <p>Exam Reviewer — 100 Items: Knowledge, Situational &amp; Modified True/False</p>
+  </header>
+
+  <!-- START SCREEN -->
+  <div id="start-screen" class="card start-card">
+    <h2>Ready to review?</h2>
+    <p>Covers Foundations of BA &amp; BI and Scope &amp; Roles in BA/BI — types of analytics, BA vs BI, evolution of analytics, data storage, roles, the BI data cycle, and real business scenarios.</p>
+    <div class="mode-grid">
+      <div class="mode-box"><b id="mc-count">0</b>Knowledge MC</div>
+      <div class="mode-box"><b id="sit-count">0</b>Situational</div>
+      <div class="mode-box"><b id="mtf-count">0</b>Modified T/F</div>
+    </div>
+    <div class="total-line" id="total-line">100 items available</div>
+    <p style="margin:0 0 8px;font-size:13px;font-weight:600;color:var(--navy);">Choose exam length:</p>
+    <div class="len-picker" id="len-picker"></div>
+    <button class="btn btn-primary" onclick="startExam()">Start Exam</button>
+    <p style="margin-top:12px;font-size:12.5px;">For Modified True/False: if you answer <b>False</b>, pick the correct replacement for the highlighted phrase.</p>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="quiz-screen" style="display:none;">
+    <div class="progress-wrap">
+      <div class="progress-top">
+        <span id="progress-label">Question 1 of 100</span>
+        <span id="progress-score">Score: 0</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+
+    <div class="card">
+      <div id="qtype-badge" class="qtype-badge qtype-mc">Knowledge</div>
+      <div id="scenario-box" class="scenario-box" style="display:none;"></div>
+      <div id="question-text" class="question-text"></div>
+
+      <!-- MC / situational options render here -->
+      <div id="mc-options"></div>
+
+      <!-- MTF true/false render here -->
+      <div id="mtf-block" style="display:none;">
+        <div class="tf-row">
+          <button class="tf-btn true-btn" id="tf-true-btn" onclick="selectTF(true)">✔ TRUE</button>
+          <button class="tf-btn false-btn" id="tf-false-btn" onclick="selectTF(false)">✘ FALSE</button>
+        </div>
+        <div class="sub-step" id="mtf-substep" style="display:none;">
+          <div class="sub-label">Select the correct replacement for the highlighted phrase:</div>
+          <div id="mtf-sub-options"></div>
+        </div>
+      </div>
+
+      <div id="feedback-box" class="feedback-box"></div>
+
+      <div class="nav-row">
+        <button class="btn btn-primary" id="next-btn" style="display:none;" onclick="nextQuestion()">Next Question →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS SCREEN -->
+  <div id="results-screen" style="display:none;">
+    <div class="card">
+      <div class="score-ring-wrap">
+        <div class="score-ring" id="score-ring">
+          <div class="score-ring-inner">
+            <div class="big" id="score-pct">0%</div>
+            <div class="small">SCORE</div>
+          </div>
+        </div>
+      </div>
+      <div class="result-msg" id="result-msg">Nice work!</div>
+      <div class="result-breakdown">
+        <div class="ok"><b id="rb-correct">0</b>Correct</div>
+        <div class="no"><b id="rb-incorrect">0</b>Incorrect</div>
+        <div><b id="rb-total">0</b>Total</div>
+      </div>
+      <div class="action-row">
+        <button class="btn btn-outline" onclick="reviewAnswers()">Review Answers</button>
+        <button class="btn btn-primary" onclick="restartExam()">Retake Exam</button>
+      </div>
+    </div>
+
+    <div id="review-filter" class="filter-row" style="display:none;"></div>
+    <div id="review-list" style="display:none; margin-top:4px;"></div>
+  </div>
+
+  <footer>Compiled from BA &amp; BI foundations, scope, and roles reviewer notes.</footer>
+</div>
+
+<script>
+/* ============ QUESTION BANK: KNOWLEDGE MC (35) ============ */
+const mcQuestions = [
+  { q:"Which type of analytics answers the question \"What happened?\"", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:0,
+    explain:"Descriptive Analytics examines historical data to summarize and describe past events — it forms the baseline for all other analytics types." },
+  { q:"Which type of analytics uses drill-down analysis and data mining to uncover root causes?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:1,
+    explain:"Diagnostic Analytics answers \"Why did it happen?\" by investigating causes, patterns, and relationships between variables." },
+  { q:"Which type of analytics uses statistical models and machine learning to forecast future outcomes?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:2,
+    explain:"Predictive Analytics answers \"What is likely to happen?\" using models and algorithms applied to historical data." },
+  { q:"Which type of analytics recommends optimal actions based on predictive insights?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:3,
+    explain:"Prescriptive Analytics answers \"What should we do?\" by combining predictive models with optimization algorithms and business rules." },
+  { q:"What is the primary focus of Business Analysis, as distinct from Business Analytics?", options:["Forecasting future outcomes using statistical models","Identifying business needs, problems, and solutions within an organization","Building centralized data warehouses","Processing real-time sensor data"], answer:1,
+    explain:"Business Analysis focuses on understanding processes, stakeholder requirements, and operational challenges — the \"what\" and \"why\" before the \"how.\"" },
+  { q:"Which key development in the emergence of BI replaced fragmented data silos?", options:["Cloud storage","Centralized data warehouses","Spreadsheets","Manual ledgers"], answer:1,
+    explain:"Centralized data warehouses unified data from multiple sources, replacing fragmented, siloed information." },
+  { q:"Which system marked the shift from manual, paper-based processes to computerized, structured reporting?", options:["Business Intelligence (BI)","Data Lake","Management Information Systems (MIS)","Prescriptive Analytics"], answer:2,
+    explain:"MIS enabled automated data collection and standardized, timely reports, laying the groundwork for BI and advanced analytics." },
+  { q:"Which storage option is best suited for holding raw, unstructured, semi-structured, AND structured data at scale?", options:["Databases","Data Warehouses","Data Lakes","Spreadsheets"], answer:2,
+    explain:"Data Lakes are flexible storage environments ideal for big data and advanced analytics because they hold all data types at scale." },
+  { q:"Which BA-related role primarily focuses on dashboards and reporting?", options:["Business Analyst","Data Scientist","BI Analyst","Systems Administrator"], answer:2,
+    explain:"The BI Analyst role centers on building dashboards and reports, while the Business Analyst handles requirements/process and the Data Scientist handles modeling/prediction." },
+  { q:"Which BA-related role primarily focuses on modeling and prediction?", options:["Business Analyst","Data Scientist","BI Analyst","Project Manager"], answer:1,
+    explain:"The Data Scientist applies statistical/predictive modeling, while the Business Analyst focuses on requirements and process, and the BI Analyst on dashboards/reporting." },
+  { q:"How many steps are in the structured process organizations follow to implement Business Analytics?", options:["4","6","8","10"], answer:2,
+    explain:"The 8-step process runs: Identify Problem → Define Objectives → Collect Data → Clean & Prepare Data → Analyze Data → Interpret Results → Take Action → Monitor Outcomes." },
+  { q:"What is the first step in the 8-step Business Analytics implementation process?", options:["Collect Data","Identify Problem","Analyze Data","Monitor Outcomes"], answer:1,
+    explain:"The process begins with identifying the problem before objectives are defined and data is collected." },
+  { q:"In the BI cycle (Collect → Analyze → Report → Decide), what is the final step?", options:["Collect","Analyze","Report","Decide"], answer:3,
+    explain:"The BI cycle ends with Decide (Take Action) — insights are only valuable once acted upon." },
+  { q:"How many categories of expertise are needed for Business Analytics roles?", options:["Two (Technical, Business)","Three (Technical, Business, Soft Skills)","Four","Five"], answer:1,
+    explain:"BA roles require Technical Skills (data analysis, SQL, BI tools), Business Skills (problem-solving, decision-making), and Soft Skills (communication, collaboration)." },
+  { q:"According to the Evolution Timeline, how many stages did Business Analytics progress through?", options:["3","4","5","6"], answer:2,
+    explain:"Stage 1: Manual Records → Stage 2: Computerized Reporting & MIS → Stage 3: Business Intelligence → Stage 4: Business Analytics (Predictive & Prescriptive) → Stage 5: AI-Driven & Real-Time Analytics." },
+  { q:"Which Business Analytics component refers to BI tools, databases, and software platforms?", options:["Data","Technology","Business Knowledge","Decision-Making"], answer:1,
+    explain:"Technology encompasses BI tools, databases, and software platforms used to process and analyze data." },
+  { q:"Which Business Analytics component refers to statistical, predictive, and prescriptive techniques applied to data?", options:["Methods","People","Decision-Making","Data"], answer:0,
+    explain:"Methods include the statistical, predictive, and prescriptive analytical techniques applied to data." },
+  { q:"Which Business Analytics component refers to domain expertise?", options:["Technology","Business Knowledge","Methods","Data"], answer:1,
+    explain:"Business Knowledge represents the domain expertise needed to interpret data in a real business context." },
+  { q:"Which Business Analytics component refers to action and outcomes?", options:["Data","Technology","Decision-Making","Methods"], answer:2,
+    explain:"Decision-Making is the component concerned with taking action and achieving outcomes from insights." },
+  { q:"What was a major limitation of early, manual business reporting?", options:["Too much real-time visibility","High risk of human error and data inconsistency","Excessive automation","Overuse of dashboards"], answer:1,
+    explain:"Manual records and paper-based reports carried a high risk of human error, data inconsistency, and difficulty retrieving historical information." },
+  { q:"Which of the following was NOT a challenge of early business reporting?", options:["No real-time visibility","Slow reporting cycles","Limited data sharing across departments","Automated report generation"], answer:3,
+    explain:"Automated report generation was a benefit introduced later by MIS — not a challenge of the early, manual reporting era." },
+  { q:"What did Business Intelligence introduce that traditional reporting lacked?", options:["Slower reporting cycles","Integrated data storage, interactive dashboards, and advanced reporting","Manual ledgers","Paper-based static reports"], answer:1,
+    explain:"BI introduced integrated data storage, seamless data integration, interactive dashboards, and advanced reporting capabilities." },
+  { q:"Which technologies drive Modern Business Analytics?", options:["Typewriters and fax machines","Big Data, Cloud Computing, AI, and Machine Learning","Paper ledgers only","Static spreadsheets only"], answer:1,
+    explain:"Modern Business Analytics is driven by Big Data, Cloud Computing, AI, and Machine Learning, enabling faster and smarter insight extraction." },
+  { q:"Which BI function involves uncovering trends, patterns, and performance gaps?", options:["Collecting data","Analyzing data","Presenting insights","Storing data"], answer:1,
+    explain:"Analyzing data is the BI function that uncovers trends, patterns, and performance gaps within collected data." },
+  { q:"Which of the following is a key function of Business Intelligence?", options:["Collecting data from multiple internal and external sources","Recommending optimal actions via optimization algorithms","Building predictive machine learning models exclusively","Interviewing stakeholders to gather requirements"], answer:0,
+    explain:"BI's key functions include collecting data from multiple sources, integrating it, analyzing it, and presenting insights through reports and dashboards." },
+  { q:"What is the primary purpose of dashboards in BI data access?", options:["Structured documents summarizing metrics over a period","Visual displays presenting real-time KPIs in a single consolidated view","One-time custom queries","Raw data storage"], answer:1,
+    explain:"Dashboards are visual displays that present real-time Key Performance Indicators and metrics in a single, consolidated view." },
+  { q:"Which BI access method allows users to track progress against strategic goals and targets?", options:["Scorecards","Ad-hoc Queries","Data Lakes","Cloud Storage"], answer:0,
+    explain:"Scorecards are performance management tools that track progress against strategic goals and targets." },
+  { q:"Which BI access method allows users to independently explore, filter, and drill down into data?", options:["Reports","Interactive Visualizations","Databases","Spreadsheets"], answer:1,
+    explain:"Interactive Visualizations are dynamic tools that let users explore, filter, and drill down into data on their own." },
+  { q:"Which of the following is an internal BI data source?", options:["Government data","Social media","Sales records","Public datasets"], answer:2,
+    explain:"Internal sources include sales records, finance data, HR systems, customer databases, and inventory." },
+  { q:"Which of the following is an external BI data source?", options:["Sales records","HR systems","Customer databases","Market research"], answer:3,
+    explain:"External sources include government data, market research, social media, and public datasets." },
+  { q:"Which storage type is a structured system (relational or non-relational) that organizes data into tables or collections for quick querying?", options:["Databases","Data Warehouses","Data Lakes","Cloud Storage"], answer:0,
+    explain:"Databases are structured storage systems that organize data into tables or collections for fast querying and retrieval." },
+  { q:"Which analytics type is described as \"the most widely used form of analytics in business today\"?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:0,
+    explain:"Descriptive Analytics is the most widely used form of analytics, forming the baseline from which deeper analysis begins." },
+  { q:"In the Business Analytics process cycle (Data → Analysis → Insights → Action), what is Step 2?", options:["Data (Input)","Analysis (Process)","Insights (Output)","Action (Decision)"], answer:1,
+    explain:"Step 2 is Analysis (Process) — applying statistical methods and technology to generate insights." },
+  { q:"What is the final step of the Business Analytics process cycle (Data → Analysis → Insights → Action)?", options:["Data (Input)","Analysis (Process)","Insights (Output)","Action (Decision)"], answer:3,
+    explain:"The cycle ends with Action (Decision) — insights only create value once they drive a decision." },
+  { q:"Which of the following best defines Business Intelligence (BI)?", options:["The practice of identifying business needs, problems, and solutions","Technologies, processes, and practices used to collect, integrate, analyze, and present business data meaningfully","A single statistical forecasting technique","A type of manual bookkeeping method"], answer:1,
+    explain:"BI refers to the technologies, processes, and practices used to collect, integrate, analyze, and present data in a meaningful way to support decisions." }
+];
+
+/* ============ QUESTION BANK: SITUATIONAL / BUSINESS CASE MC (35) ============ */
+const situationalQuestions = [
+  { q:"A retail company notices sales dropped 15% last month and wants to know WHY. Which type of analytics should they use?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:1,
+    explain:"Investigating causes behind a past outcome is Diagnostic Analytics — it answers \"Why did it happen?\"" },
+  { q:"An HR department wants to identify which employees are at risk of resigning in the next six months. Which type of analytics fits best?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:2,
+    explain:"Forecasting a future outcome (attrition risk) is Predictive Analytics." },
+  { q:"A logistics company wants a system that automatically recommends the best delivery routes to minimize fuel costs. Which type of analytics is this?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:3,
+    explain:"Automatically recommending the optimal action is Prescriptive Analytics." },
+  { q:"A finance team compiles a monthly report summarizing total revenue and expenses. Which type of analytics is this?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:0,
+    explain:"Summarizing historical performance is Descriptive Analytics — it answers \"What happened?\"" },
+  { q:"A marketing team wants to understand why a recent campaign underperformed compared to previous ones. Which type of analytics applies?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:1,
+    explain:"Understanding the root cause of underperformance is Diagnostic Analytics." },
+  { q:"An e-commerce site uses past purchase behavior to forecast next quarter's demand for a product. Which type of analytics is this?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:2,
+    explain:"Forecasting future demand from historical data is Predictive Analytics." },
+  { q:"A bank uses an algorithm to automatically flag suspicious transactions AND recommend the best fraud-prevention action. Which type of analytics is this?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:3,
+    explain:"Recommending the optimal action based on predictive insight is Prescriptive Analytics." },
+  { q:"A CFO wants a simple dashboard summarizing total quarterly sales broken down region by region. Which type of analytics is this?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:0,
+    explain:"A summary of what already happened, region by region, is Descriptive Analytics." },
+  { q:"A retail chain wants a centralized repository combining structured sales data from all its stores for standardized reporting. What storage solution fits best?", options:["Data Lake","Data Warehouse","Spreadsheet","Cloud folder only"], answer:1,
+    explain:"Data Warehouses are centralized repositories built specifically for integrated, structured data and analytical reporting." },
+  { q:"A company wants to store massive volumes of raw, unstructured social media posts and video content for future machine learning projects. What storage solution fits best?", options:["Database","Data Warehouse","Data Lake","Paper ledger"], answer:2,
+    explain:"Data Lakes hold raw, unstructured, semi-structured, and structured data at scale — ideal for big data and ML use cases." },
+  { q:"A growing startup needs remote, scalable, pay-as-you-go storage that's easy to integrate with modern analytics tools. What storage solution fits best?", options:["Manual ledger","Cloud Storage","Static spreadsheet","Filing cabinet"], answer:1,
+    explain:"Cloud Storage offers scalable, on-demand, remotely accessible storage that's cost-efficient for growing organizations." },
+  { q:"A project needs someone to gather requirements from stakeholders and define what problem needs solving BEFORE any data modeling begins. Who should lead this?", options:["Data Scientist","Business Analyst","BI Analyst","Systems Administrator"], answer:1,
+    explain:"The Business Analyst focuses on requirements and process — defining the problem before analytics work begins." },
+  { q:"A company needs someone to build a predictive churn model using machine learning. Who should lead this task?", options:["Business Analyst","Data Scientist","BI Analyst","HR Manager"], answer:1,
+    explain:"The Data Scientist specializes in modeling and prediction, such as building a churn prediction model." },
+  { q:"A team needs someone to build an executive dashboard showing real-time KPIs across departments. Who should lead this?", options:["Business Analyst","Data Scientist","BI Analyst","Data Lake Administrator"], answer:2,
+    explain:"The BI Analyst focuses on dashboards and reporting." },
+  { q:"A hospital wants to investigate the root causes behind a recent spike in patient readmission rates. Which type of analytics is needed?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:1,
+    explain:"Investigating root causes of a past trend is Diagnostic Analytics." },
+  { q:"A supply chain manager wants to estimate how much stock to order next month based on past demand trends. Which type of analytics is needed?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:2,
+    explain:"Estimating future stock needs from historical trends is Predictive Analytics." },
+  { q:"An airline uses an automated system that suggests optimal ticket pricing based on demand forecasts and business rules. Which type of analytics is this?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:3,
+    explain:"Combining forecasts with business rules to recommend an optimal action (pricing) is Prescriptive Analytics." },
+  { q:"A retail company gathers point-of-sale (POS) transaction records to understand daily foot traffic. Which BI data-gathering source is this?", options:["Transaction Systems","Sensors & IoT Devices","Social Media","Surveys & Feedback Forms"], answer:0,
+    explain:"Transaction Systems refer to point-of-sale records and financial transactions." },
+  { q:"A company surveys customers after every purchase to measure satisfaction. Which BI data-gathering source is this?", options:["Transaction Systems","Surveys & Feedback Forms","Sensors & IoT Devices","Customer Records"], answer:1,
+    explain:"Surveys & Feedback Forms capture customer satisfaction, employee feedback, and market research." },
+  { q:"A factory floor uses connected devices to send real-time temperature and pressure readings to a monitoring system. Which BI data-gathering source is this?", options:["Sensors & IoT Devices","Social Media","Spreadsheets & Manual Inputs","Customer Records"], answer:0,
+    explain:"Sensors & IoT Devices provide real-time operational data from equipment and environments." },
+  { q:"A company monitors hashtags and brand mentions online to gauge public sentiment about a new product. Which BI data-gathering source is this?", options:["Customer Records","Social Media","Transaction Systems","Websites & Mobile Apps"], answer:1,
+    explain:"Social Media data captures customer sentiment, brand mentions, and audience insights." },
+  { q:"An organization pulls government economic indicators and public datasets to inform strategic planning. What kind of BI data source is this?", options:["Internal source","External source","Transaction source","Sensor source"], answer:1,
+    explain:"Government data and public datasets are classified as external BI data sources." },
+  { q:"A hospital IT team interviews doctors and nurses to document exactly what a new scheduling system needs to do before development starts. What discipline is this?", options:["Business Analytics","Business Analysis","Predictive Analytics","Prescriptive Analytics"], answer:1,
+    explain:"Interviewing stakeholders to define needs and requirements before building a solution is Business Analysis, not Analytics." },
+  { q:"A retail data team builds a regression model to forecast next season's product demand using historical sales data. What discipline is this?", options:["Business Analysis","Business Analytics","Manual Reporting","Systems Administration"], answer:1,
+    explain:"Building statistical/predictive models from data is Business Analytics." },
+  { q:"In the 1980s, a small company recorded all its transactions by hand in physical ledgers. Which evolution stage does this represent?", options:["Stage 1: Manual Records & Early Reporting","Stage 3: Business Intelligence","Stage 4: Business Analytics","Stage 5: AI-Driven & Real-Time Analytics"], answer:0,
+    explain:"Recording transactions by hand in physical ledgers describes Stage 1: Manual Records & Early Reporting." },
+  { q:"A company adopts a computerized system that automatically generates standardized weekly sales reports. Which evolution stage does this represent?", options:["Stage 1: Manual Records","Stage 2: Computerized Reporting & MIS","Stage 4: Business Analytics","Stage 5: AI-Driven Analytics"], answer:1,
+    explain:"Automated, standardized computerized reporting describes Stage 2: Computerized Reporting & MIS." },
+  { q:"A company builds an interactive dashboard combining sales, finance, and HR data from a centralized data warehouse. Which evolution stage does this represent?", options:["Stage 1: Manual Records","Stage 2: MIS","Stage 3: Business Intelligence (BI)","Stage 5: AI-Driven Analytics"], answer:2,
+    explain:"Interactive dashboards fed by a centralized warehouse describe Stage 3: Business Intelligence (BI)." },
+  { q:"A company applies machine learning to recommend next-best actions in real time using live IoT sensor feeds. Which evolution stage does this represent?", options:["Stage 2: MIS","Stage 3: Business Intelligence","Stage 4: Business Analytics","Stage 5: AI-Driven & Real-Time Analytics"], answer:3,
+    explain:"Real-time, AI/ML-driven recommendations from live sensor feeds describe Stage 5: AI-Driven & Real-Time Analytics." },
+  { q:"A bakery wants to know its total sales for last month, broken down by product type. Which type of analytics is this?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:0,
+    explain:"A simple summary of past sales by product is Descriptive Analytics." },
+  { q:"An insurance company wants to identify the likely causes behind a recent spike in claim rejections. Which type of analytics is this?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:1,
+    explain:"Identifying causes behind an observed spike is Diagnostic Analytics." },
+  { q:"A university wants to estimate how many students are likely to enroll next semester based on past enrollment trends. Which type of analytics is this?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:2,
+    explain:"Estimating a future outcome from historical trends is Predictive Analytics." },
+  { q:"A delivery company wants a system that automatically assigns the most fuel-efficient routes given multiple constraints. Which type of analytics is this?", options:["Descriptive Analytics","Diagnostic Analytics","Predictive Analytics","Prescriptive Analytics"], answer:3,
+    explain:"Automatically recommending optimal routes given constraints is Prescriptive Analytics." },
+  { q:"A small business owner wants to visualize monthly sales trends using bar and line charts in a report. Which BI data-access method is this?", options:["Scorecards","Charts & Graphs","Ad-hoc Queries","Data Lakes"], answer:1,
+    explain:"Charts & Graphs are visual representations that make trends, comparisons, and patterns easy to understand." },
+  { q:"A manager wants a single, real-time view of company KPIs without needing to request a fresh report from IT each time. Which BI data-access method fits best?", options:["Report","Dashboard","Ad-hoc Query","Data Warehouse"], answer:1,
+    explain:"A Dashboard provides a real-time, consolidated, always-current view of KPIs." },
+  { q:"An analyst runs a one-time custom query to answer a specific, unplanned business question. Which BI data-access method is this?", options:["Scorecard","Dashboard","Ad-hoc Query","Interactive Visualization"], answer:2,
+    explain:"An Ad-hoc Query is a one-time, custom query used to answer a specific unplanned question." }
+];
+
+/* ============ QUESTION BANK: MODIFIED TRUE/FALSE (30) ============ */
+const mtfQuestions = [
+  { statement:"Descriptive Analytics answers the question '{X}'", blank:"What is likely to happen?", isTrue:false, correct:"What happened?", distractors:["Why did it happen?","What should we do?"],
+    explain:"Descriptive Analytics summarizes historical data to answer \"What happened?\" — forecasting future outcomes is Predictive Analytics." },
+  { statement:"Diagnostic Analytics uses {X} to identify root causes and patterns behind outcomes.", blank:"drill-down analysis and data mining", isTrue:true,
+    explain:"Diagnostic Analytics investigates causes and contributing factors using drill-down analysis and data mining." },
+  { statement:"Prescriptive Analytics answers the question '{X}'", blank:"Why did it happen?", isTrue:false, correct:"What should we do?", distractors:["What happened?","What is likely to happen?"],
+    explain:"Prescriptive Analytics recommends optimal actions, answering \"What should we do?\" — identifying root causes is Diagnostic Analytics." },
+  { statement:"Business Intelligence primarily focuses on {X}, using statistical models and predictive techniques to support decision-making.", blank:"data-driven insights and forecasting", isTrue:false, correct:"collecting, storing, organizing, accessing, and analyzing data", distractors:["identifying business needs and stakeholder requirements","recommending optimal actions and trade-offs"],
+    explain:"That description belongs to Business Analytics. BI focuses on collecting, storing, organizing, accessing, and analyzing data to support informed decisions." },
+  { statement:"Data Warehouses are {X} optimized for analytical reporting and BI queries.", blank:"centralized repositories that integrate large volumes of structured data", isTrue:true,
+    explain:"Data Warehouses are centralized repositories built specifically to support analytical reporting and BI queries." },
+  { statement:"A Data Lake is a storage environment ideal for holding {X} only.", blank:"structured data", isTrue:false, correct:"raw, unstructured, semi-structured, and structured data", distractors:["financial transaction records","paper-based ledgers"],
+    explain:"Data Lakes are flexible environments that hold ALL data types at scale — not structured data alone (that's closer to a traditional database)." },
+  { statement:"Management Information Systems (MIS) marked a major leap forward by replacing {X} with computerized systems.", blank:"manual, paper-based processes", isTrue:true,
+    explain:"MIS replaced manual records and paper-based reports with automated, standardized computerized reporting." },
+  { statement:"The structured process organizations use to implement Business Analytics has {X} steps.", blank:"5", isTrue:false, correct:"8", distractors:["4","6"],
+    explain:"The BA implementation process has 8 steps, from Identify Problem to Monitor Outcomes." },
+  { statement:"The Business Analyst role among BA professionals focuses on {X}.", blank:"modeling & prediction", isTrue:false, correct:"requirements & process", distractors:["dashboards & reporting","infrastructure & servers"],
+    explain:"Modeling & prediction is the Data Scientist's focus. The Business Analyst focuses on requirements & process." },
+  { statement:"Predictive Analytics helps organizations {X}, reducing uncertainty in business decision-making.", blank:"prepare and plan proactively", isTrue:true,
+    explain:"Predictive Analytics forecasts future events and behaviors, helping organizations plan proactively and reduce uncertainty." },
+  { statement:"Business Analytics is the practice of {X} within an organization.", blank:"identifying business needs, problems, and solutions", isTrue:false, correct:"using data, statistical methods, technology, and analytical techniques to understand and improve business performance", distractors:["hiring and training new employees","designing office floor plans"],
+    explain:"That definition describes Business Analysis. Business Analytics uses data, statistical methods, technology, and analytical techniques to improve performance." },
+  { statement:"The Business Analytics process cycle follows: {X}.", blank:"Data → Analysis → Insights → Action", isTrue:true,
+    explain:"The cycle is Data (Input) → Analysis (Process) → Insights (Output) → Action (Decision)." },
+  { statement:"In the BI cycle discussed, the order of steps is: {X}.", blank:"Report → Analyze → Collect → Decide", isTrue:false, correct:"Collect → Analyze → Report → Decide", distractors:["Decide → Collect → Analyze → Report","Analyze → Collect → Decide → Report"],
+    explain:"The correct BI cycle order is Collect (gather data) → Analyze (find insights) → Report (visualize data) → Decide (take action)." },
+  { statement:"Internal BI data sources include {X}.", blank:"sales records, finance data, HR systems, customer databases, and inventory", isTrue:true,
+    explain:"Internal sources are data generated within the organization: sales, finance, HR, customer databases, and inventory." },
+  { statement:"External BI data sources include {X}.", blank:"customer databases and inventory records", isTrue:false, correct:"government data, market research, social media, and public datasets", distractors:["sales records and finance data","HR systems and payroll records"],
+    explain:"Customer databases and inventory are internal sources. External sources include government data, market research, social media, and public datasets." },
+  { statement:"Cloud Storage offers {X}, enabling remote access, cost efficiency, and easy integration with modern analytics tools.", blank:"scalable, on-demand storage hosted on cloud platforms", isTrue:true,
+    explain:"Cloud Storage is scalable, on-demand storage that enables remote access, cost efficiency, and integration with analytics tools." },
+  { statement:"Databases are described as {X} that integrate large volumes of structured data from multiple sources for BI queries.", blank:"centralized repositories", isTrue:false, correct:"structured storage systems (relational or non-relational) that organize data into tables or collections", distractors:["flexible environments that hold raw and unstructured data","scalable, on-demand cloud platforms"],
+    explain:"That description of a centralized repository belongs to Data Warehouses. Databases organize data into tables/collections for quick querying." },
+  { statement:"Dashboards are {X} summarizing key metrics and performance data over a defined period.", blank:"structured documents", isTrue:false, correct:"visual displays presenting real-time KPIs in a single, consolidated view", distractors:["one-time custom queries","raw, unstructured datasets"],
+    explain:"Structured documents summarizing metrics over a period describe Reports. Dashboards are real-time visual displays of KPIs." },
+  { statement:"Scorecards are performance management tools that {X}.", blank:"track progress against strategic goals and targets", isTrue:true,
+    explain:"Scorecards specifically track progress against strategic goals and targets." },
+  { statement:"The four types of business analytics, in order of progression, are: {X}.", blank:"Descriptive, Predictive, Diagnostic, Prescriptive", isTrue:false, correct:"Descriptive, Diagnostic, Predictive, Prescriptive", distractors:["Diagnostic, Descriptive, Prescriptive, Predictive","Predictive, Prescriptive, Descriptive, Diagnostic"],
+    explain:"The correct progression is Descriptive → Diagnostic → Predictive → Prescriptive, moving from past events to recommended future actions." },
+  { statement:"Early business reporting relied on manual records and ledgers, leading to {X}.", blank:"high risk of human error and slow reporting cycles", isTrue:true,
+    explain:"Manual, paper-based reporting carried a high risk of human error, data inconsistency, and slow reporting cycles." },
+  { statement:"MIS (Management Information Systems) introduced {X} with standardized report formats.", blank:"automated data collection", isTrue:true,
+    explain:"MIS introduced automated data collection and generated standardized, timely reports for management review." },
+  { statement:"The emergence of Business Intelligence {X} with static, paper-based reports.", blank:"replaced interactive dashboards", isTrue:false, correct:"replaced static, paper-based reports with interactive dashboards", distractors:["had no effect on reporting formats","only applied to manual ledgers"],
+    explain:"It's the reverse: BI replaced static, paper-based reports WITH interactive dashboards, not the other way around." },
+  { statement:"Modern Business Analytics is driven by {X}.", blank:"Big Data, Cloud Computing, AI, and Machine Learning", isTrue:true,
+    explain:"Modern Business Analytics leverages Big Data, Cloud Computing, AI, and Machine Learning to process data faster and smarter." },
+  { statement:"The Business Analytics evolution timeline has exactly {X} stages.", blank:"3", isTrue:false, correct:"5", distractors:["4","6"],
+    explain:"There are 5 stages: Manual Records, MIS, Business Intelligence, Business Analytics (Predictive & Prescriptive), and AI-Driven & Real-Time Analytics." },
+  { statement:"Business Analysis and Business Analytics are {X} that do not complement each other.", blank:"unrelated disciplines", isTrue:false, correct:"complementary disciplines", distractors:["identical disciplines","competing departments"],
+    explain:"They are complementary: Analysis defines the problem/questions, while Analytics provides data-driven answers and predictions." },
+  { statement:"A Business Analyst's Technical Skills include {X}.", blank:"SQL, statistics, and data visualization", isTrue:true,
+    explain:"Technical Skills for BA roles include data analysis, statistics, SQL and databases, data visualization, and BI tools." },
+  { statement:"Soft skills needed for BA roles include {X}.", blank:"communication, presentation, and collaboration", isTrue:true,
+    explain:"Soft Skills for BA roles are communication, presentation, and collaboration." },
+  { statement:"The 8-step Business Analytics implementation process ends with '{X}' as the final step.", blank:"Take Action", isTrue:false, correct:"Monitor Outcomes", distractors:["Collect Data","Define Objectives"],
+    explain:"The process ends with Monitor Outcomes (step 8), which comes after Take Action (step 7), for continuous improvement." },
+  { statement:"Business Analytics is applied {X}, with no relevance to Finance, HR, Operations, or Customer Service.", blank:"only in Marketing", isTrue:false, correct:"across all core business functions", distractors:["only in IT departments","only in government agencies"],
+    explain:"Business Analytics is applied across all core business functions — Marketing, Sales, Finance, HR, Operations, Supply Chain, and Customer Service." }
+];
+
+/* ============ BUILD EXAM ============ */
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+let examQuestions = [];
+let currentIndex = 0;
+let score = 0;
+let userLog = [];
+let examLength = 100;
+
+const TOTAL_AVAILABLE = mcQuestions.length + situationalQuestions.length + mtfQuestions.length;
+document.getElementById('mc-count').textContent = mcQuestions.length;
+document.getElementById('sit-count').textContent = situationalQuestions.length;
+document.getElementById('mtf-count').textContent = mtfQuestions.length;
+document.getElementById('total-line').textContent = TOTAL_AVAILABLE + ' items available';
+
+/* length picker */
+const lengthOptions = [20, 50, 80, 100];
+const lenPicker = document.getElementById('len-picker');
+lengthOptions.forEach(n => {
+  const b = document.createElement('button');
+  b.className = 'len-btn' + (n === 100 ? ' active' : '');
+  b.textContent = n + ' items';
+  b.onclick = () => {
+    examLength = n;
+    document.querySelectorAll('.len-btn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+  };
+  lenPicker.appendChild(b);
+});
+examLength = 100;
+
+function buildExam(){
+  const mc = mcQuestions.map(q => ({type:'mc', data:q}));
+  const sit = situationalQuestions.map(q => ({type:'sit', data:q}));
+  const mtf = mtfQuestions.map(q => ({type:'mtf', data:q}));
+  const all = shuffle(mc.concat(sit, mtf));
+  examQuestions = all.slice(0, Math.min(examLength, all.length));
+}
+
+function startExam(){
+  buildExam();
+  currentIndex = 0;
+  score = 0;
+  userLog = [];
+  document.getElementById('start-screen').style.display = 'none';
+  document.getElementById('results-screen').style.display = 'none';
+  document.getElementById('quiz-screen').style.display = 'block';
+  renderQuestion();
+}
+
+/* ============ RENDER QUESTION ============ */
+function renderQuestion(){
+  const total = examQuestions.length;
+  const item = examQuestions[currentIndex];
+
+  document.getElementById('progress-label').textContent = `Question ${currentIndex+1} of ${total}`;
+  document.getElementById('progress-score').textContent = `Score: ${score}`;
+  document.getElementById('progress-fill').style.width = `${(currentIndex/total)*100}%`;
+
+  const badge = document.getElementById('qtype-badge');
+  const feedback = document.getElementById('feedback-box');
+  feedback.className = 'feedback-box';
+  feedback.innerHTML = '';
+  document.getElementById('next-btn').style.display = 'none';
+
+  const scenarioBox = document.getElementById('scenario-box');
+  scenarioBox.style.display = 'none';
+  scenarioBox.innerHTML = '';
+
+  const mcBox = document.getElementById('mc-options');
+  const mtfBox = document.getElementById('mtf-block');
+  mcBox.innerHTML = '';
+  document.getElementById('mtf-sub-options').innerHTML = '';
+  document.getElementById('mtf-substep').style.display = 'none';
+  document.getElementById('tf-true-btn').className = 'tf-btn true-btn';
+  document.getElementById('tf-false-btn').className = 'tf-btn false-btn';
+
+  if(item.type === 'mc' || item.type === 'sit'){
+    if(item.type === 'sit'){
+      badge.textContent = 'Situational / Business Case';
+      badge.className = 'qtype-badge qtype-sit';
+    } else {
+      badge.textContent = 'Knowledge';
+      badge.className = 'qtype-badge qtype-mc';
+    }
+    document.getElementById('question-text').innerHTML = item.data.q;
+    mcBox.style.display = 'block';
+    mtfBox.style.display = 'none';
+
+    const letters = ['A','B','C','D'];
+    item.data.options.forEach((opt, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option';
+      btn.innerHTML = `<span class="opt-letter">${letters[idx]}</span><span>${opt}</span>`;
+      btn.onclick = () => selectMC(idx);
+      mcBox.appendChild(btn);
+    });
+  } else {
+    badge.textContent = 'Modified True/False';
+    badge.className = 'qtype-badge qtype-mtf';
+    const displayStatement = item.data.statement.replace('{X}', `<em>${item.data.blank}</em>`);
+    document.getElementById('question-text').innerHTML = displayStatement;
+    mcBox.style.display = 'none';
+    mtfBox.style.display = 'block';
+  }
+}
+
+/* ============ MC / SITUATIONAL LOGIC ============ */
+function selectMC(idx){
+  const item = examQuestions[currentIndex];
+  const opts = document.querySelectorAll('#mc-options .option');
+  opts.forEach(o => o.onclick = null);
+
+  const correctIdx = item.data.answer;
+  const isCorrect = idx === correctIdx;
+
+  opts.forEach((o, i) => {
+    if(i === correctIdx) o.classList.add('correct');
+    if(i === idx && !isCorrect) o.classList.add('incorrect');
+    o.classList.add('locked');
+  });
+
+  if(isCorrect) score++;
+  showFeedback(isCorrect, item.data.explain);
+  userLog.push({
+    type:item.type,
+    question:item.data.q,
+    yourAnswer:item.data.options[idx],
+    correctAnswer:item.data.options[correctIdx],
+    isCorrect:isCorrect,
+    explain:item.data.explain
+  });
+  document.getElementById('next-btn').style.display = 'inline-flex';
+}
+
+/* ============ MTF LOGIC ============ */
+function selectTF(choice){
+  const item = examQuestions[currentIndex];
+
+  const trueBtn = document.getElementById('tf-true-btn');
+  const falseBtn = document.getElementById('tf-false-btn');
+  trueBtn.onclick = null; falseBtn.onclick = null;
+
+  trueBtn.classList.add(item.data.isTrue ? 'correct' : 'incorrect');
+  falseBtn.classList.add(!item.data.isTrue ? 'correct' : 'incorrect');
+
+  if(item.data.isTrue){
+    const isCorrect = choice === true;
+    if(isCorrect) score++;
+    showFeedback(isCorrect, item.data.explain);
+    userLog.push({
+      type:'mtf',
+      question:item.data.statement.replace('{X}', item.data.blank),
+      yourAnswer: choice ? 'True' : 'False',
+      correctAnswer:'True (statement is correct as written)',
+      isCorrect:isCorrect,
+      explain:item.data.explain
+    });
+    document.getElementById('next-btn').style.display = 'inline-flex';
+  } else if(choice === false){
+    document.getElementById('mtf-substep').style.display = 'block';
+    const subBox = document.getElementById('mtf-sub-options');
+    subBox.innerHTML = '';
+    const options = shuffle([item.data.correct].concat(item.data.distractors));
+    options.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.className = 'option';
+      btn.innerHTML = `<span>${opt}</span>`;
+      btn.onclick = () => selectMTFCorrection(opt, item);
+      subBox.appendChild(btn);
+    });
+  } else {
+    showFeedback(false, `This statement is actually FALSE. The correct version replaces "${item.data.blank}" with "${item.data.correct}." ${item.data.explain}`);
+    userLog.push({
+      type:'mtf',
+      question:item.data.statement.replace('{X}', item.data.blank),
+      yourAnswer:'True',
+      correctAnswer:`False — should read "${item.data.correct}"`,
+      isCorrect:false,
+      explain:item.data.explain
+    });
+    document.getElementById('next-btn').style.display = 'inline-flex';
+  }
+}
+
+function selectMTFCorrection(chosenOpt, item){
+  const subOpts = document.querySelectorAll('#mtf-sub-options .option');
+  subOpts.forEach(o => o.onclick = null);
+  const isCorrect = chosenOpt === item.data.correct;
+  subOpts.forEach(o => {
+    if(o.textContent === item.data.correct) o.classList.add('correct');
+    else if(o.textContent === chosenOpt && !isCorrect) o.classList.add('incorrect');
+    o.classList.add('locked');
+  });
+
+  if(isCorrect) score++;
+  showFeedback(isCorrect, item.data.explain);
+  userLog.push({
+    type:'mtf',
+    question:item.data.statement.replace('{X}', item.data.blank),
+    yourAnswer:`False — replacement: "${chosenOpt}"`,
+    correctAnswer:`False — should read "${item.data.correct}"`,
+    isCorrect:isCorrect,
+    explain:item.data.explain
+  });
+  document.getElementById('next-btn').style.display = 'inline-flex';
+}
+
+/* ============ FEEDBACK / NAV ============ */
+function showFeedback(isCorrect, text){
+  const box = document.getElementById('feedback-box');
+  box.classList.add('show');
+  box.classList.add(isCorrect ? 'fb-correct' : 'fb-incorrect');
+  box.innerHTML = `<b>${isCorrect ? '✔ Correct!' : '✘ Not quite.'}</b>${text}`;
+  document.getElementById('progress-score').textContent = `Score: ${score}`;
+}
+
+function nextQuestion(){
+  currentIndex++;
+  if(currentIndex >= examQuestions.length){
+    showResults();
+  } else {
+    renderQuestion();
+  }
+}
+
+/* ============ RESULTS ============ */
+function showResults(){
+  document.getElementById('quiz-screen').style.display = 'none';
+  document.getElementById('results-screen').style.display = 'block';
+  document.getElementById('review-list').style.display = 'none';
+  document.getElementById('review-filter').style.display = 'none';
+  document.getElementById('review-list').innerHTML = '';
+
+  const total = examQuestions.length;
+  const pct = Math.round((score/total)*100);
+  document.getElementById('score-ring').style.setProperty('--pct', pct);
+  document.getElementById('score-pct').textContent = pct + '%';
+  document.getElementById('rb-correct').textContent = score;
+  document.getElementById('rb-incorrect').textContent = total - score;
+  document.getElementById('rb-total').textContent = total;
+
+  let msg = 'Keep reviewing — you\'ll get there!';
+  if(pct >= 90) msg = 'Outstanding! You\'ve got this topic locked in. 🎉';
+  else if(pct >= 75) msg = 'Great job! Just a few gaps to close.';
+  else if(pct >= 50) msg = 'Decent start — review the missed items below.';
+  document.getElementById('result-msg').textContent = msg;
+}
+
+let currentReviewFilter = 'all';
+const typeLabels = { mc:'Knowledge', sit:'Situational', mtf:'Modified T/F' };
+const typeColors = { mc:'#e6edff', sit:'#f3e8ff', mtf:'#fff1e0' };
+const typeTextColors = { mc:'#1d4ed8', sit:'#7c3aed', mtf:'#b45309' };
+
+function reviewAnswers(){
+  const list = document.getElementById('review-list');
+  const filterRow = document.getElementById('review-filter');
+  if(list.style.display === 'block'){
+    list.style.display = 'none';
+    filterRow.style.display = 'none';
+    return;
+  }
+
+  filterRow.innerHTML = '';
+  const chips = [
+    {key:'all', label:'All'},
+    {key:'wrong', label:'Missed Only'},
+    {key:'mc', label:'Knowledge'},
+    {key:'sit', label:'Situational'},
+    {key:'mtf', label:'Modified T/F'}
+  ];
+  chips.forEach(c => {
+    const chip = document.createElement('button');
+    chip.className = 'filter-chip' + (c.key === currentReviewFilter ? ' active' : '');
+    chip.textContent = c.label;
+    chip.onclick = () => { currentReviewFilter = c.key; renderReviewList(); };
+    filterRow.appendChild(chip);
+  });
+  filterRow.style.display = 'flex';
+
+  renderReviewList();
+  list.style.display = 'block';
+}
+
+function renderReviewList(){
+  const list = document.getElementById('review-list');
+  list.innerHTML = '';
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+
+  const chips = document.querySelectorAll('.filter-chip');
+  chips.forEach(c => {
+    if((c.textContent === 'All' && currentReviewFilter === 'all') ||
+       (c.textContent === 'Missed Only' && currentReviewFilter === 'wrong') ||
+       (c.textContent === 'Knowledge' && currentReviewFilter === 'mc') ||
+       (c.textContent === 'Situational' && currentReviewFilter === 'sit') ||
+       (c.textContent === 'Modified T/F' && currentReviewFilter === 'mtf')){
+      c.classList.add('active');
+    }
+  });
+
+  userLog.forEach((r, i) => {
+    if(currentReviewFilter === 'wrong' && r.isCorrect) return;
+    if(['mc','sit','mtf'].includes(currentReviewFilter) && r.type !== currentReviewFilter) return;
+
+    const div = document.createElement('div');
+    div.className = 'review-item';
+    div.innerHTML = `
+      <span class="rtag" style="background:${typeColors[r.type]};color:${typeTextColors[r.type]};">${typeLabels[r.type]}</span>
+      <div class="rq">${i+1}. ${r.question}</div>
+      <div class="review-line ${r.isCorrect ? '' : 'ans-you'}"><span class="review-icon">${r.isCorrect ? '✔' : '✘'}</span>Your answer: ${r.yourAnswer}</div>
+      ${!r.isCorrect ? `<div class="review-line ans-correct"><span class="review-icon">✔</span>Correct answer: ${r.correctAnswer}</div>` : ''}
+      <div class="review-explain">${r.explain}</div>
+    `;
+    list.appendChild(div);
+  });
+
+  if(list.innerHTML === ''){
+    list.innerHTML = '<p style="text-align:center;color:#9aa1b3;font-size:13.5px;">No items match this filter.</p>';
+  }
+}
+
+function restartExam(){
+  document.getElementById('results-screen').style.display = 'none';
+  document.getElementById('start-screen').style.display = 'block';
+}
+</script>
+</body>
+</html>
